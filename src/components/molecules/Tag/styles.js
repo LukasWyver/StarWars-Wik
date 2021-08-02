@@ -10,7 +10,7 @@ export const TagContainer = styled.View`
   padding-right: ${({ theme }) => theme.metrics.px(4)}px;
   border-radius: ${({theme}) => theme.metrics.px(24)}px;
   width: auto;
-  max-width: ${({ theme }) => theme.metrics.px(80)}px;
+  max-width: ${({ theme }) => theme.metrics.px(90)}px;
   margin-top: ${({ theme, mt }) => theme.metrics.px(mt || 0)}px;
   margin-bottom: ${({ theme, mb }) => theme.metrics.px(mb || 0)}px;
   margin-left: ${({ theme, ml }) => theme.metrics.px(ml || 0)}px;

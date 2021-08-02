@@ -1,10 +1,13 @@
 import React from 'react'
-import { ScreenScrollContainer, Hero } from '~/components'
+import { ScreenScrollContainer, Hero, GoBack  } from '~/components'
+import { useDataStore } from '~/services/stores'
 
 export const Datail = () => {
+  const { selectedData } = useDataStore()
   return (
     <ScreenScrollContainer>
-      <Hero />
+      <Hero item={selectedData} onDetail />
+      <GoBack />
     </ScreenScrollContainer>
   )
 }
