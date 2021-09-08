@@ -68,7 +68,7 @@ export const Home = () => {
   return (
     <ScreenScrollContainer>
       <Hero item={{
-        title: 'Episódio VI',
+        title: 'Episódio VII',
         subtitle: 'O Despertar da Força',
         type: 'Filme',
         image_url: 'https://th.bing.com/th/id/R.b09963151a059d27ef2985562b1571b9?rik=9HhOwPjkxN9Qvg&pid=ImgRaw',
