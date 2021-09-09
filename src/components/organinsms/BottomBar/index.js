@@ -1,5 +1,16 @@
 import React from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { Ionicons } from '@expo/vector-icons'
+
+import { BottomBarContainer, BarItem } from './styles'
+import { Text } from '~/components/atoms'
+
+import { theme } from '~/styles/theme'
+
+const routeIcons = {
+  Home: 'home-outline',
+  Search: 'search-outline',
+  Favorites: 'heart-outline',
+}
 
 export const BottomBar = ({ state, descriptors, navigation }) => {
   const focusedOptions = descriptors[state.routes[state.index].key].options
@@ -9,7 +20,7 @@ export const BottomBar = ({ state, descriptors, navigation }) => {
   }
 
   return (
-    <View style={{ flexDirection: 'row' }}>
+    <BottomBarContainer>
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key]
         const label =
@@ -39,22 +50,31 @@ export const BottomBar = ({ state, descriptors, navigation }) => {
             target: route.key,
           })
         }
+
         return (
-          <TouchableOpacity
+          <BarItem
             accessibilityRole="button"
             accessibilityState={isFocused ? { selected: true } : {}}
             accessibilityLabel={options.tabBarAccessibilityLabel}
             testID={options.tabBarTestID}
             onPress={onPress}
             onLongPress={onLongPress}
-            style={{ flex: 1 }}
           >
-            <Text style={{ color: isFocused ? '#673ab7' : '#222' }}>
+            <Ionicons
+              size={theme.metrics.px(20)}
+              name={routeIcons[route.name]}
+              color={isFocused ? theme.colors.white : theme.colors.grey}
+            />
+            <Text
+              fontFamily="semiBold"
+              size={10}
+              color={isFocused ? 'white' : 'grey'}
+            >
               {label}
             </Text>
-          </TouchableOpacity>
+          </BarItem>
         )
       })}
-    </View>
+    </BottomBarContainer>
   )
 }

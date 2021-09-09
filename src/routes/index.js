@@ -2,7 +2,6 @@ import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { Ionicons } from '@expo/vector-icons'
 import {
   Home,
   SplashScreen,
@@ -10,29 +9,15 @@ import {
   SearchScreen,
   FavoritesScreen,
 } from '../screens'
-import { theme } from '~/styles/theme'
-
-const routeIcons = {
-  Home: 'home-outline',
-  Search: 'search-outline',
-  Favorites: 'heart-outline',
-}
+import { BottomBar } from '~/components/'
 
 const BottomRoute = () => {
   const Tab = createBottomTabNavigator()
 
   return (
     <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
-          return (
-            <Ionicons name={routeIcons[route.name]} size={size} color={color} />
-          )
-        },
-        headerShown: false,
-        tabBarActiveTintColor: theme.colors.red,
-        tabBarInactiveTintColor: theme.colors.dark,
-      })}
+      tabBar={(props) => <BottomBar {...props} />}
+      screenOptions={{ headerShown: false }}
     >
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen
